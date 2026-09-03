@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 out/frames/
+out/*.wav
+out/nachtglas_101_picture.mp4
