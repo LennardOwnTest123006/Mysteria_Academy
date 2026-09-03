@@ -19,8 +19,7 @@ PAD = 70
 
 
 # ---------------------------------------------------------------- SVG --------
-def fmt(pl):
-    return "M " + " L ".join(f"{x:.2f},{y:.2f}" for x, y in pl)
+from glyphs import svg_path as fmt
 
 
 def build_svg():

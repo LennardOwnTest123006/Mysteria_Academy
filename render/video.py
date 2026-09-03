@@ -16,7 +16,7 @@ import scenery
 from glyphs import word_polylines, word_width, crack_polyline, flame_anchor, STROKE, CAP
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-W, H = 1600, 668            # 2.39:1
+W, H = 1440, 602            # 2.39:1
 FPS = 24
 PW, PH = int(W * 1.55), int(H * 1.55)
 
@@ -243,7 +243,7 @@ def grain_tiles():
         for k in range(6):
             r = random.Random(400 + k)
             g = Image.new("L", (W // 2, H // 2))
-            g.putdata([r.randint(112, 143) for _ in range(W // 2 * H // 2)])
+            g.putdata([r.randint(122, 133) for _ in range(W // 2 * H // 2)])
             _GRAIN.append(g.resize((W, H), Image.BILINEAR).convert("RGB"))
     return _GRAIN
 
@@ -669,8 +669,8 @@ def main():
     import imageio_ffmpeg
     ff = imageio_ffmpeg.get_ffmpeg_exe()
     cmd = [ff, "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
-           "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264", "-preset", "medium",
-           "-crf", "21", "-pix_fmt", "yuv420p", "-movflags", "+faststart", out]
+           "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264", "-preset", "slow",
+           "-crf", "26", "-pix_fmt", "yuv420p", "-movflags", "+faststart", out]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE,
                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     import time

@@ -68,3 +68,18 @@ def crack_polyline(width, y_center, amplitude=1.0, seed=7):
 def flame_anchor(word=WORD, index=1):
     """Centre point of the counter of the A at `index` (default: the first A)."""
     return (index * (ADVANCE + TRACKING) + 30.0, 85.0)
+
+
+def svg_path(pl):
+    """Format a polyline as SVG path data.
+
+    Axis-aligned polylines (the H, the T, both A crossbars) have a zero-width or
+    zero-height bounding box, and renderers drop those when a filter is in play.
+    A 0.02-unit nudge on the last point is invisible and keeps every glyph.
+    """
+    pts = [list(p) for p in pl]
+    if len({round(p[0], 4) for p in pts}) == 1:
+        pts[-1][0] += 0.02
+    if len({round(p[1], 4) for p in pts}) == 1:
+        pts[-1][1] += 0.02
+    return "M " + " L ".join(f"{x:.2f},{y:.2f}" for x, y in pts)
