@@ -42,7 +42,7 @@ marble in their pocket.
 ## The rendered episode
 
 **`out/nachtglas_101.mp4`** — the complete pilot as a **cinematic animatic**:
-11 minutes 20, 1600×668 (2.39:1), 24 fps, with the **complete original score and sound
+11 minutes 20, 1440×602 (2.39:1), 24 fps, 58 MB, with the **complete original score and sound
 design** synthesised from scratch, and the full German dialogue carried as subtitles.
 
 It is a real, continuous, single-file cut of the whole episode — the camera moves, the
