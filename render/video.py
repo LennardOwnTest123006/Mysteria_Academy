@@ -463,7 +463,9 @@ def get_plate(loc):
 
 def render_frame(shot, u, fi):
     fx = shot["fx"]
-    if shot["loc"] == "title":
+    # the title renderer is selected by the beat's own stage, not by location -
+    # the end card lives at the tail of scene 24, whose location is "dawn"
+    if fx.get("t") or shot["loc"] == "title":
         fr = render_title(fx, u)
     else:
         plate, meta = get_plate(shot["loc"])
